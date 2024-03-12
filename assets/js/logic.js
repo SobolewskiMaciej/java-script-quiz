@@ -77,3 +77,41 @@ function startQuiz() {
   // Load sound files
 var correctSound = new Audio("assets/sfx/correct.wav");
 var wrongSound = new Audio("assets/sfx/incorrect.wav");
+
+// Event listener for the start button
+startButton.addEventListener("click", function() {
+    startQuiz();
+  });
+  
+  // Event listener for the submit button
+  submitButton.addEventListener("click", function(event) {
+    // Get the initials and score values from the input fields
+    var initials = initialsInputText.value;
+    var score = finalScoreTextSection.textContent;
+  
+    // Check if initials and score are not empty
+    if (initials && score) {
+      // Generate a unique key for each game data
+      var gameKey = "gameData_" + Date.now();
+  
+      // Create an object with initials and score
+      var data = {
+        initials: initials,
+        score: score,
+      };
+  
+      initialsInputText.value = "";
+  
+      // Store the data object in local storage with the unique key
+      localStorage.setItem(gameKey, JSON.stringify(data));
+  
+      // Redirect to highscores.html
+      window.location.href = "highscores.html";
+  
+      // Retrieve the data from local storage to verify it was stored correctly
+      var retrievedData = JSON.parse(localStorage.getItem(gameKey));
+      console.log(retrievedData);
+    } else {
+      console.log("Please enter initials and score");
+    }
+  });
