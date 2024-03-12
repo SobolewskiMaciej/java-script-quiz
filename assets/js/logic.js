@@ -66,3 +66,10 @@ function startQuiz() {
       questionChoices.appendChild(choiceButton);
     });
   }
+
+  function endQuiz() {
+    clearInterval(timer); // Stop the timer
+    questionsSection.classList.add("hide");
+    endScreenSection.classList.remove("hide");
+    finalScoreTextSection.textContent = timerCount;
+  }
