@@ -73,3 +73,7 @@ function startQuiz() {
     endScreenSection.classList.remove("hide");
     finalScoreTextSection.textContent = timerCount;
   }
+
+  // Load sound files
+var correctSound = new Audio("assets/sfx/correct.wav");
+var wrongSound = new Audio("assets/sfx/incorrect.wav");
